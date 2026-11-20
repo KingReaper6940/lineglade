@@ -2,6 +2,8 @@
 
 A little room for every record.
 
+**[Open Lineglade](https://lineglade.vercel.app)**
+
 Lineglade is a local, read-only JSONL / NDJSON inspector. Compare wrapped fields, filter a nested value, inspect malformed lines, and download matching records without rounding large numbers.
 
 - **Readable comparisons:** 1–6 JSON Pointer columns, wrapped text, optional user / assistant row cues, and full raw / pretty record detail.
