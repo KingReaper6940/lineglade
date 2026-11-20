@@ -5,21 +5,21 @@ export class ParseError extends Error{
 // A syntax tree keeps number tokens and duplicate object names intact.
 export function parseJSON(text,limits=LIMITS){
  let i=0,count=0,duplicates=0;
- const fail=(message,limited=false)=>{throw new ParseError(message,i+1,limited)};
+ const fail=(message,limited=false,column=i+1)=>{throw new ParseError(message,column,limited)};
  const ws=()=>{while(i<text.length&&/[ \t\r\n]/.test(text[i]))i++};
  function string(){
   const start=i++;
   while(i<text.length){
    const c=text.charCodeAt(i++);
    if(c===34)return JSON.parse(text.slice(start,i));
-   if(c<32)fail('Unescaped control character in string.');
+   if(c<32)fail('Unescaped control character in string.',false,i);
    if(c===92){
     if(i>=text.length)fail('Incomplete escape.');
     const escape=text[i++];
     if(escape==='u'){
      if(!/^[0-9a-fA-F]{4}$/.test(text.slice(i,i+4)))fail('Expected four hexadecimal digits.');
      i+=4;
-    }else if(!'"\\/bfnrt'.includes(escape))fail('Invalid string escape.');
+    }else if(!'"\\/bfnrt'.includes(escape))fail('Invalid string escape.',false,i);
    }
   }
   fail('Unterminated string.');
@@ -35,12 +35,12 @@ export function parseJSON(text,limits=LIMITS){
    for(;;){
     if(object){
      ws();if(text[i]!=='"')fail('Expected a quoted object name.');
-     const key=string();ws();if(text[i++]!==':')fail('Expected a colon after the object name.');
+     const key=string();ws();if(text[i]!==':')fail('Expected a colon after the object name.');i++;
      if(seen.has(key))duplicates++;seen.add(key);
      entries.push({key,value:value(depth+1)});
     }else items.push(value(depth+1));
     ws();if(text[i]===close){i++;break}
-    if(text[i++]!==',')fail('Expected a comma or closing bracket.');
+    if(text[i]!==',')fail('Expected a comma or closing bracket.');i++;
    }
    return object?{type:'object',entries}:{type:'array',items};
   }

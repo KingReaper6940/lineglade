@@ -86,7 +86,7 @@ Depth / node-limit failures do not prove that a line is invalid JSON. They mean 
 
 ## Tests and examples
 
-`npm test` runs 25 automated checks: JSON grammar against native parsing for 150+ safe values, exact numeric tokens, pointer escape / duplicate-key behavior, resource bounds, line reconstruction, typed filters, safe complete exports, simulated DOM workflows, import races, and real Blob payloads. JSDOM checks do not establish native rendering, screen-reader usability or operating-system download behavior.
+`npm test` runs 26 automated checks: JSON grammar against native parsing for 150+ safe values, exact numeric tokens, pointer escape / duplicate-key behavior, resource bounds, line reconstruction, typed filters, safe complete exports, simulated DOM workflows, import races, and real Blob payloads. JSDOM checks do not establish native rendering, screen-reader usability or operating-system download behavior.
 
 `npm run example` regenerates six synthetic artifacts in [examples](examples/). The sample deliberately has seven physical lines: five valid records, one malformed record, one blank row, and one valid record with a duplicated key. No real conversations or personal data are included.
 

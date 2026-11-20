@@ -90,3 +90,9 @@ test('pagination and role cues never invent rows or verify identity',()=>{
  assert.equal(page(r.rows,1).items[0].line,21);assert.equal(page(r.rows,99).items.length,5);assert.equal(page([],0).pages,1);
  assert.equal(role(r.rows[0],'/role'),'user');assert.equal(role(r.rows[0],'/missing'),'other');
 });
+test('syntax diagnostics identify the unexpected character using one-based UTF16 columns',()=>{
+ const slash=String.fromCharCode(92),tab=String.fromCharCode(9);
+ for(const [source,column] of [['{"a" 1}',6],['[1 2]',4],['"a'+slash+'x"',4],['"a'+tab+'b"',3]]){
+  assert.throws(()=>parseJSON(source),e=>e instanceof ParseError&&e.column===column);
+ }
+});
