@@ -1,0 +1,194 @@
+{
+  "schema": "lineglade-report/1",
+  "project": {
+    "schema": "lineglade/1",
+    "title": "Workshop notes",
+    "columns": [
+      "/id",
+      "/role",
+      "/content"
+    ],
+    "pointer": "/content",
+    "operator": "all",
+    "needle": "",
+    "rolePointer": "/role",
+    "notes": "Synthetic records. The malformed, blank and duplicate-key rows are intentional.",
+    "source": "{\"id\":9007199254740993,\"role\":\"user\",\"content\":\"Bring paper, markers, and a timer.\\nRemember the spare batteries.\"}\r\n{\"id\":2,\"role\":\"assistant\",\"content\":\"The room opens at nine. Each team gets a table.\",\"meta\":{\"ready\":true}}\r\n{\"id\":3,\"role\":\"user\",\"content\":null}\r\n{\"id\":4,\"role\":\"assistant\",\"content\":\"Use the side entrance.\",\"content\":\"Ask at reception.\"}\r\n{\"id\":5,\"content\":\"Check supplies\",}\r\n\r\n{\"id\":6,\"role\":\"assistant\",\"content\":\"Packed and ready.\",\"ratio\":1e400}\r\n"
+  },
+  "summary": {
+    "physical": 7,
+    "valid": 5,
+    "matched": 5,
+    "invalid": 1,
+    "blank": 1,
+    "limited": 0,
+    "duplicateRows": 1
+  },
+  "matchedLines": [
+    1,
+    2,
+    3,
+    4,
+    7
+  ],
+  "records": [
+    {
+      "line": 1,
+      "kind": "valid",
+      "column": null,
+      "message": "",
+      "duplicateNames": 0,
+      "raw": "{\"id\":9007199254740993,\"role\":\"user\",\"content\":\"Bring paper, markers, and a timer.\\nRemember the spare batteries.\"}\r\n",
+      "columns": [
+        {
+          "pointer": "/id",
+          "state": "found",
+          "type": "number",
+          "text": "9007199254740993"
+        },
+        {
+          "pointer": "/role",
+          "state": "found",
+          "type": "string",
+          "text": "user"
+        },
+        {
+          "pointer": "/content",
+          "state": "found",
+          "type": "string",
+          "text": "Bring paper, markers, and a timer.\nRemember the spare batteries."
+        }
+      ]
+    },
+    {
+      "line": 2,
+      "kind": "valid",
+      "column": null,
+      "message": "",
+      "duplicateNames": 0,
+      "raw": "{\"id\":2,\"role\":\"assistant\",\"content\":\"The room opens at nine. Each team gets a table.\",\"meta\":{\"ready\":true}}\r\n",
+      "columns": [
+        {
+          "pointer": "/id",
+          "state": "found",
+          "type": "number",
+          "text": "2"
+        },
+        {
+          "pointer": "/role",
+          "state": "found",
+          "type": "string",
+          "text": "assistant"
+        },
+        {
+          "pointer": "/content",
+          "state": "found",
+          "type": "string",
+          "text": "The room opens at nine. Each team gets a table."
+        }
+      ]
+    },
+    {
+      "line": 3,
+      "kind": "valid",
+      "column": null,
+      "message": "",
+      "duplicateNames": 0,
+      "raw": "{\"id\":3,\"role\":\"user\",\"content\":null}\r\n",
+      "columns": [
+        {
+          "pointer": "/id",
+          "state": "found",
+          "type": "number",
+          "text": "3"
+        },
+        {
+          "pointer": "/role",
+          "state": "found",
+          "type": "string",
+          "text": "user"
+        },
+        {
+          "pointer": "/content",
+          "state": "found",
+          "type": "null",
+          "text": "null"
+        }
+      ]
+    },
+    {
+      "line": 4,
+      "kind": "valid",
+      "column": null,
+      "message": "",
+      "duplicateNames": 1,
+      "raw": "{\"id\":4,\"role\":\"assistant\",\"content\":\"Use the side entrance.\",\"content\":\"Ask at reception.\"}\r\n",
+      "columns": [
+        {
+          "pointer": "/id",
+          "state": "found",
+          "type": "number",
+          "text": "4"
+        },
+        {
+          "pointer": "/role",
+          "state": "found",
+          "type": "string",
+          "text": "assistant"
+        },
+        {
+          "pointer": "/content",
+          "state": "ambiguous",
+          "type": "ambiguous",
+          "text": "ambiguous"
+        }
+      ]
+    },
+    {
+      "line": 5,
+      "kind": "invalid",
+      "column": 36,
+      "message": "Expected a quoted object name.",
+      "duplicateNames": 0,
+      "raw": "{\"id\":5,\"content\":\"Check supplies\",}\r\n",
+      "columns": []
+    },
+    {
+      "line": 6,
+      "kind": "blank",
+      "column": null,
+      "message": "Blank physical lines are not JSON values.",
+      "duplicateNames": 0,
+      "raw": "\r\n",
+      "columns": []
+    },
+    {
+      "line": 7,
+      "kind": "valid",
+      "column": null,
+      "message": "",
+      "duplicateNames": 0,
+      "raw": "{\"id\":6,\"role\":\"assistant\",\"content\":\"Packed and ready.\",\"ratio\":1e400}\r\n",
+      "columns": [
+        {
+          "pointer": "/id",
+          "state": "found",
+          "type": "number",
+          "text": "6"
+        },
+        {
+          "pointer": "/role",
+          "state": "found",
+          "type": "string",
+          "text": "assistant"
+        },
+        {
+          "pointer": "/content",
+          "state": "found",
+          "type": "string",
+          "text": "Packed and ready."
+        }
+      ]
+    }
+  ]
+}

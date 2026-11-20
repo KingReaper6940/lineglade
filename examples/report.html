@@ -1,0 +1,34 @@
+<!doctype html><html lang="en"><meta charset="utf-8"><meta name="viewport" content="width=device-width"><meta http-equiv="Content-Security-Policy" content="default-src &#39;none&#39;; style-src &#39;unsafe-inline&#39;; base-uri &#39;none&#39;; form-action &#39;none&#39;"><title>Workshop notes</title><style>body{font:16px system-ui;color:#142c42;max-width:1100px;margin:auto;padding:32px}pre,td{white-space:pre-wrap;overflow-wrap:anywhere}table{border-collapse:collapse;width:100%}th,td{padding:12px;border:1px solid #a4b7c6;text-align:left;vertical-align:top}summary{cursor:pointer;padding:12px}h1{font-size:32px}small{font-size:14px}</style><h1>Workshop notes</h1><p>Read-only JSONL inspection. User and assistant values are source labels, not verified identities. Raw exports preserve original text. Pretty formatting normalizes whitespace and string escapes.</p><p>{&quot;physical&quot;:7,&quot;valid&quot;:5,&quot;matched&quot;:5,&quot;invalid&quot;:1,&quot;blank&quot;:1,&quot;limited&quot;:0,&quot;duplicateRows&quot;:1}</p><p>Filter: /content · all · </p><p>Synthetic records. The malformed, blank and duplicate-key rows are intentional.</p><h2>All matching records</h2><table><thead><tr><th>Line</th><th>/id</th><th>/role</th><th>/content</th></tr></thead><tbody><tr><td>1</td><td><small>number</small><pre>9007199254740993</pre></td><td><small>string</small><pre>user</pre></td><td><small>string</small><pre>Bring paper, markers, and a timer.
+Remember the spare batteries.</pre></td></tr><tr><td>2</td><td><small>number</small><pre>2</pre></td><td><small>string</small><pre>assistant</pre></td><td><small>string</small><pre>The room opens at nine. Each team gets a table.</pre></td></tr><tr><td>3</td><td><small>number</small><pre>3</pre></td><td><small>string</small><pre>user</pre></td><td><small>null</small><pre>null</pre></td></tr><tr><td>4</td><td><small>number</small><pre>4</pre></td><td><small>string</small><pre>assistant</pre></td><td><small>ambiguous</small><pre>ambiguous</pre></td></tr><tr><td>7</td><td><small>number</small><pre>6</pre></td><td><small>string</small><pre>assistant</pre></td><td><small>string</small><pre>Packed and ready.</pre></td></tr></tbody></table><h2>Complete source inspection</h2><details><summary>Line 1 · valid</summary><p></p><h3>Raw physical line</h3><pre>{&quot;id&quot;:9007199254740993,&quot;role&quot;:&quot;user&quot;,&quot;content&quot;:&quot;Bring paper, markers, and a timer.\nRemember the spare batteries.&quot;}
+</pre><h3>Pretty JSON</h3><pre>{
+  &quot;id&quot;: 9007199254740993,
+  &quot;role&quot;: &quot;user&quot;,
+  &quot;content&quot;: &quot;Bring paper, markers, and a timer.\nRemember the spare batteries.&quot;
+}</pre></details><details><summary>Line 2 · valid</summary><p></p><h3>Raw physical line</h3><pre>{&quot;id&quot;:2,&quot;role&quot;:&quot;assistant&quot;,&quot;content&quot;:&quot;The room opens at nine. Each team gets a table.&quot;,&quot;meta&quot;:{&quot;ready&quot;:true}}
+</pre><h3>Pretty JSON</h3><pre>{
+  &quot;id&quot;: 2,
+  &quot;role&quot;: &quot;assistant&quot;,
+  &quot;content&quot;: &quot;The room opens at nine. Each team gets a table.&quot;,
+  &quot;meta&quot;: {
+    &quot;ready&quot;: true
+  }
+}</pre></details><details><summary>Line 3 · valid</summary><p></p><h3>Raw physical line</h3><pre>{&quot;id&quot;:3,&quot;role&quot;:&quot;user&quot;,&quot;content&quot;:null}
+</pre><h3>Pretty JSON</h3><pre>{
+  &quot;id&quot;: 3,
+  &quot;role&quot;: &quot;user&quot;,
+  &quot;content&quot;: null
+}</pre></details><details><summary>Line 4 · valid · duplicate names: 1</summary><p></p><h3>Raw physical line</h3><pre>{&quot;id&quot;:4,&quot;role&quot;:&quot;assistant&quot;,&quot;content&quot;:&quot;Use the side entrance.&quot;,&quot;content&quot;:&quot;Ask at reception.&quot;}
+</pre><h3>Pretty JSON</h3><pre>{
+  &quot;id&quot;: 4,
+  &quot;role&quot;: &quot;assistant&quot;,
+  &quot;content&quot;: &quot;Use the side entrance.&quot;,
+  &quot;content&quot;: &quot;Ask at reception.&quot;
+}</pre></details><details><summary>Line 5 · invalid</summary><p>Expected a quoted object name. Column 36</p><h3>Raw physical line</h3><pre>{&quot;id&quot;:5,&quot;content&quot;:&quot;Check supplies&quot;,}
+</pre></details><details><summary>Line 6 · blank</summary><p>Blank physical lines are not JSON values.</p><h3>Raw physical line</h3><pre>
+</pre></details><details><summary>Line 7 · valid</summary><p></p><h3>Raw physical line</h3><pre>{&quot;id&quot;:6,&quot;role&quot;:&quot;assistant&quot;,&quot;content&quot;:&quot;Packed and ready.&quot;,&quot;ratio&quot;:1e400}
+</pre><h3>Pretty JSON</h3><pre>{
+  &quot;id&quot;: 6,
+  &quot;role&quot;: &quot;assistant&quot;,
+  &quot;content&quot;: &quot;Packed and ready.&quot;,
+  &quot;ratio&quot;: 1e400
+}</pre></details></html>

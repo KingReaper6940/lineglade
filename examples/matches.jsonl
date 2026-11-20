@@ -1,0 +1,5 @@
+{"id":9007199254740993,"role":"user","content":"Bring paper, markers, and a timer.\nRemember the spare batteries."}
+{"id":2,"role":"assistant","content":"The room opens at nine. Each team gets a table.","meta":{"ready":true}}
+{"id":3,"role":"user","content":null}
+{"id":4,"role":"assistant","content":"Use the side entrance.","content":"Ask at reception."}
+{"id":6,"role":"assistant","content":"Packed and ready.","ratio":1e400}
